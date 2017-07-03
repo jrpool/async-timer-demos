@@ -1,0 +1,74 @@
+{
+  "name": "async-timer-demos",
+  "description": "Demonstrations of asynchronous timer methods in JavaScript",
+  "author": "Jonathan Pool",
+  "license": "MIT",
+  "private": false,
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.0.0"
+  },
+  "scripts": {
+    "lint": "eslint src/; exit 0"
+  },
+  "bugs": {
+    "url": "https://github.com/jrpool/async-timer-demos.git/issues"
+  },
+  "homepage": "https://github.com/jrpool/async-timer-demos.git/index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jrpool/async-timer-demos.git"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "browser": true,
+      "es6": true,
+      "mocha": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "no-array-constructor": [
+        "error"
+      ],
+      "no-cond-assign": [
+        "off"
+      ],
+      "no-console": [
+        "off"
+      ],
+      "no-const-assign": [
+        "error"
+      ],
+      "no-new-object": [
+        "error"
+      ],
+      "no-var": [
+        "error"
+      ],
+      "prefer-const": [
+        "warn"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
+    }
+  }
+}
