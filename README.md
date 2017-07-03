@@ -62,6 +62,12 @@ Therefore, when the anonymous function references `timer`, `timer` already exist
 
 Running `npm run eslint` produces a warning about `timer` in version 2. This appears to be a bug in eslint’s `prefer-const` rule, which should not demand that a declaration with no assignment be made with `const`, since such a declaration is invalid. If the idea behind this warning is that the assignment should be made earlier, namely combined with the declaration, that would not work here, because it would cause `nextIntegerOut` to be referenced before it is declared. Because of this apparent bug, the `eslint` configuration in this project makes that rule produce warnings instead of errors.
 
+### `async-timeout':
+
+The `async-timeout` module has the same functionality as the `async-interval` modules. It implements that functionality with the recursive use of `setTimeout`, instead of doing so with a one-time use of `setInterval`.
+
+The module treats the first iteration differently from those after it, in order to replicate the `async-interval` functionality, namely to output each integer after the specified delay, and after the last integer to exit with no delay.
+
 ## Installation and Setup
 
 0. These instructions presuppose that [npm][npm] is installed.
