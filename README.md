@@ -11,13 +11,16 @@ Demonstrations of asynchronous timer methods in JavaScript
 async-interval-1
 async-interval-2
 async-interval-3
+async-timeout
 ```
 
 ## Discussion
 
 This project contains demonstrations of methods of using timers to schedule events with JavaScript.
 
-The modules use built-in functions of either Node or the JavaScript WindowOrWorkerGlobalScope API that perform user-defined actions either one time or repetitively after a specified time has elapsed.
+The demonstrations are designed to perform the tasks defined by Ilya Kantor in (“Scheduling: setTimeout and setInterval”)[https://javascript.info/settimeout-setinterval], with some modifications, including making Node the execution environment, making the time interval a variable, and validating arguments.
+
+The modules use built-in Node functions that perform user-defined actions either one time or repetitively after a specified time has elapsed.
 
 The modules are intended to be mainly self-documenting. However, if you are using these demonstrations as you learn JavaScript fundamentals, the discussion below may be informative.
 
@@ -49,7 +52,7 @@ These modules deal distinctly with the need to make the `timer` variable availab
 
 - In version 3, the declaration of `timer` and the definition of the anonymous function that will clear the timer occur in the very same statement.
 
-The execution order in version 3 may seem counterintuitive. On its face, it looks as if `timer` is declared and defined only after the invocation of `setInterval` has been evaluated by the JavaScript compiler. Otherwise, the compiler would not know what value to assign to `timer`. If that were true, then the compiler would need to reject the appearance of `timer` within the invocation, because `timer` would not yet exist.
+The execution order in version 3 may seem counterintuitive. On its face, it looks as if `timer` is declared and defined only after the invocation of `setInterval` has been evaluated by the JavaScript compiler. If so, then the compiler could know what value to assign to `timer`. The compiler would need to reject the appearance of `timer` within the invocation, because `timer` would not yet exist.
 
 Version 3 runs correctly, however, because the execution order differs from how it may seem. A statement of the form `const timer = setInterval(…);` is compiled as if it were 2 statements followed by a contract prohibiting any reassignment on pain of type error:
 
@@ -60,7 +63,7 @@ timer = setInterval(…);
 
 Therefore, when the anonymous function references `timer`, `timer` already exists. At that point it is undefined, but that does not prevent compilation. The function will use the actual value of `timer` only when the function is executed, and in fact not until the last time it is executed. By then `integersOut` will have given the `timer` constant its value.
 
-Running `npm run eslint` produces a warning about `timer` in version 2. This appears to be a bug in eslint’s `prefer-const` rule, which should not demand that a declaration with no assignment be made with `const`, since such a declaration is invalid. If the idea behind this warning is that the assignment should be made earlier, namely combined with the declaration, that would not work here, because it would cause `nextIntegerOut` to be referenced before it is declared. Because of this apparent bug, the `eslint` configuration in this project makes that rule produce warnings instead of errors.
+Running `npm run lint` produces a warning about `timer` in version 2. This appears to be a bug in eslint’s `prefer-const` rule, which should not demand that a declaration with no assignment be made with `const`, since such a declaration is invalid. If the idea behind this warning is that the assignment should be made earlier, namely combined with the declaration, that would not work here, because it would cause `nextIntegerOut` to be referenced before it is declared. Because of this apparent bug, the `eslint` configuration in this project makes that rule produce warnings instead of errors.
 
 ### `async-timeout':
 
