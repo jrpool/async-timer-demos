@@ -19,13 +19,13 @@ const areAscIntRangeAndMs =
   are invalid.
 */
 const nextIntegerOut = (current, through, delay) => {
-  // Output the next integer and increment it.
-  console.log(current++);
   /*
-    Set a timer to output the next integer after the specified delay, if
-    there is one.
+    Set a timer to output and increment the next integer and re-execute
+    this function after the specified delay, if the new next integer exists.
   */
   if (current <= through) {
+    // Output the next integer and increment it.
+    console.log(current++);
     setTimeout(() => {nextIntegerOut(current, through, delay);}, delay);
   }
 };
