@@ -18,7 +18,7 @@ async-timeout
 
 This project contains demonstrations of methods of using timers to schedule events with JavaScript.
 
-The demonstrations are designed to perform the tasks defined by Ilya Kantor in (“Scheduling: setTimeout and setInterval”)[https://javascript.info/settimeout-setinterval], with some modifications, including making Node the execution environment, making the time interval a variable, and validating arguments.
+The demonstrations are designed to perform the tasks defined by Ilya Kantor in [“Scheduling: setTimeout and setInterval”][https://javascript.info/settimeout-setinterval], with some modifications, including making Node the execution environment, making the time interval a variable, and validating arguments.
 
 The modules use built-in Node functions that perform user-defined actions either one time or repetitively after a specified time has elapsed.
 
